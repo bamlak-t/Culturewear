@@ -3,6 +3,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { UserProvider } from '@auth0/nextjs-auth0';
 import Head from 'next/head'
 import theme from '../src/theme'
 
@@ -13,12 +14,11 @@ function MyApp({ Component, pageProps }) {
     </Head>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
     </ThemeProvider>
-
   </>
-
-
 }
 
 export default MyApp
