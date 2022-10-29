@@ -1,6 +1,5 @@
 import { db } from '../../../lib/firebase'
 
-// get user information
 const tailorRoutes = async (req, res) => {
     const { id } = req.query
     if (req.method === "GET") {

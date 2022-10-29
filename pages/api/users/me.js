@@ -7,9 +7,7 @@ const DEFAULT_USER = {
 	designs: []
 }
 
-// TODO: post request to edit user data
-
-// get current  user information
+// get current user information
 const getCurrentUser = async (req, res) => {
 	const { user } = getSession(req, res);
 	if (req.method === "GET") {
@@ -25,6 +23,14 @@ const getCurrentUser = async (req, res) => {
 			}
 			const userData = { id: userDoc.id, ...userDoc.data() }
 			res.status(200).json({ userData })
+		} catch (e) {
+			res.status(400).end()
+		}
+	} else if (req.method === "POST") {
+		try {
+			const { userUpdate } = req.body
+			await db.collection('users').doc(user.user_id).update(userUpdate)
+			res.status(200).end()
 		} catch (e) {
 			res.status(400).end()
 		}
