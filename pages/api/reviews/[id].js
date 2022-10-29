@@ -1,5 +1,7 @@
 import { db } from '../../../lib/firebase'
 
+// TODO: ability to sort and filter
+
 // get user information
 const reviewRoutes = async (req, res) => {
     const { id } = req.query

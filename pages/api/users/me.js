@@ -7,6 +7,8 @@ const DEFAULT_USER = {
 	designs: []
 }
 
+// TODO: post request to edit user data
+
 // get current  user information
 const getCurrentUser = async (req, res) => {
 	const { user } = getSession(req, res);

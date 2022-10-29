@@ -1,5 +1,9 @@
 import { db } from '../../lib/firebase'
 
+// TODO: create listing (and update tailors tags)
+
+// TODO: ability to sort and filter
+
 // get user information
 const designsRoutes = async (req, res) => {
     if (req.method === "GET") {
