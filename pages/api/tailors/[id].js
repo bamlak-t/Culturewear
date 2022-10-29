@@ -5,7 +5,7 @@ const tailorRoutes = async (req, res) => {
     const { id } = req.query
     if (req.method === "GET") {
         try {
-            const tailor = await db.collection('tailor').doc(id).get()
+            const tailor = await db.collection('tailors').doc(id).get()
             if (!tailor.exists) {
                 res.status(404).end()
             } else {
