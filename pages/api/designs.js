@@ -1,7 +1,7 @@
 import { db } from '../../lib/firebase'
 
 // get user information
-export default async (req, res) => {
+const designsRoutes = async (req, res) => {
     if (req.method === "GET") {
         try {
             const designs = await db.collection('designs').get()
@@ -15,3 +15,5 @@ export default async (req, res) => {
         res.status(405).end()
     }
 }
+
+export default designsRoutes

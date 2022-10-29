@@ -8,7 +8,7 @@ const DEFAULT_USER = {
 }
 
 // get current  user information
-const usersRoute = async (req, res) => {
+const getCurrentUser = async (req, res) => {
 	const { user } = getSession(req, res);
 	if (req.method === "GET") {
 		try {
@@ -31,4 +31,4 @@ const usersRoute = async (req, res) => {
 	}
 }
 
-export default withApiAuthRequired(usersRoute)
+export default withApiAuthRequired(getCurrentUser)
