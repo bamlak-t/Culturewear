@@ -1,5 +1,9 @@
 export default function Home() {
   return (
-    <p>Hello World</p>
+    <>
+      <a href="/api/auth/login">Login</a>
+      <br />
+      <a href="/api/auth/logout">Logout</a>
+    </>
   )
 }
