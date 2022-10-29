@@ -12,7 +12,7 @@
     "@auth0/nextjs-auth0": "^1.9.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@fontsource/rnpmoboto": "^4.5.8",
+    "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
     "next": "13.0.0",
