@@ -5,7 +5,7 @@ import '@fontsource/roboto/700.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import Head from 'next/head'
-import theme from '../src/theme'
+import theme from '../lib/theme'
 
 function MyApp({ Component, pageProps }) {
   return <>
