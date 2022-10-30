@@ -7,7 +7,11 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import axios from 'axios';
-
+import { socials } from '../src/mockdata'
+import FormControl from '@mui/material/FormControl';
+import InputAdornment from '@mui/material/InputAdornment';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
 function Account({ user: authOUser }) {
 
     const [prodName, setProdName] = useState('')
@@ -16,11 +20,10 @@ function Account({ user: authOUser }) {
     const [curUser, setCurUsr] = useState('')
 
     const [prodPricing, setProdPrice] = useState()
-    const [prodImg, setProdImg] = useState('')
+    const [prodImg, setProdImg] = useState('') 
 
-    const rCatagories = {
-        "deliveryTime": "Delivery Time", "fit": "Fit", "materialQuality": "Material Quality", "responseTime": "Response Time"
-    }
+    const [allDisabled, setAllDisabled] = useState(true)
+
 
     useEffect(() => {
         const settings = async () => {
@@ -77,21 +80,16 @@ function Account({ user: authOUser }) {
                     <TextField
                         id="outlined-name"
                         label="Firstname"
-                        style={{marginTop: 30}}
+                        style={{ marginTop: 30, flex: 1 }}
+                        disabled={allDisabled}
                         value={prodName}
                         onChange={e => handleChange(e, "name")}
                     />
                     <TextField
                         id="outlined-name"
                         label="Surname"
-                        style={{marginTop: 30}}
-                        value={prodDesc}
-                        onChange={e => handleChange(e, "desc")}
-                    />
-                    <TextField
-                        id="outlined-name"
-                        label="E-mail"
-                        style={{marginTop: 30}}
+                        style={{ marginTop: 30, flex: 1 }}
+                        disabled={allDisabled}
                         value={prodDesc}
                         onChange={e => handleChange(e, "desc")}
                     />
@@ -107,34 +105,65 @@ function Account({ user: authOUser }) {
 
                 <Stack direction="column" spacing={5}>
 
-                    <TextField
-                        id="outlined-name"
-                        label="Twitter"
-                        value={prodDesc}
-                        onChange={e => handleChange(e, "desc")}
-                    />
-                    <TextField
-                        id="outlined-name"
-                        label="Facebook"
-                        value={prodDesc}
-                        onChange={e => handleChange(e, "desc")}
-                    />
-                    <TextField
-                        id="outlined-name"
-                        label="E-mail"
-                        value={prodDesc}
-                        onChange={e => handleChange(e, "desc")}
-                    />
-                    <TextField
-                        id="outlined-name"
-                        label="Instagram"
-                        value={prodDesc}
-                        onChange={e => handleChange(e, "desc")}
-                    />
-                    <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', width: '100%', marginTop: 10 }}>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <InputLabel htmlFor="outlined-adornment-amount">Instagram</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-amount"
+                            value={prodPricing}
+                            disabled={allDisabled}
+                            onChange={e => handleChange(e, "price")}
+                            startAdornment={<InputAdornment position="start">{socials["instagram"]}</InputAdornment>}
+                            label="Price"
+                        />
+                    </FormControl>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <InputLabel htmlFor="outlined-adornment-amount">Facebook</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-amount"
+                            value={prodPricing}
+                            disabled={allDisabled}
+                            onChange={e => handleChange(e, "price")}
+                            startAdornment={<InputAdornment position="start">{socials["facebook"]}</InputAdornment>}
+                            label="Price"
+                        />
+                    </FormControl>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <InputLabel htmlFor="outlined-adornment-amount">Whatsapp</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-amount"
+                            value={prodPricing}
+                            disabled={allDisabled}
+                            onChange={e => handleChange(e, "price")}
+                            startAdornment={<InputAdornment position="start">{socials["watsapp"]}</InputAdornment>}
+                            label="Price"
+                        />
+                    </FormControl>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <InputLabel htmlFor="outlined-adornment-amount">Email</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-amount"
+                            value={prodPricing}
+                            disabled={allDisabled}
+                            onChange={e => handleChange(e, "price")}
+                            startAdornment={<InputAdornment position="start">{socials["gmail"]}</InputAdornment>}
+                            label="Price"
+                        />
+                    </FormControl>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                        <InputLabel htmlFor="outlined-adornment-amount">Twitter</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-amount"
+                            value={prodPricing}
+                            disabled={allDisabled}
+                            onChange={e => handleChange(e, "price")}
+                            startAdornment={<InputAdornment position="start">{socials["twitter"]}</InputAdornment>}
+                            label="Price"
+                        />
+                    </FormControl>
+                    {/* <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', width: '100%', marginTop: 10 }}>
                         <Button variant="outlined">Cancel</Button>
                         <Button variant="contained">Submit</Button>
-                    </Stack>
+                    </Stack> */}
                 </Stack>
             </Stack>
         </div>
