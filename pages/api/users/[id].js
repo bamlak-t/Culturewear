@@ -9,7 +9,11 @@ const userRoutes = async (req, res) => {
             if (!user.exists) {
                 res.status(404).end()
             } else {
-                const userData = { id: user.id, ...user.data() }
+                const userData = {
+                    ...user.data(),
+                    id: user.id,
+                    picture: await resolvePictureUrl(user.data().picture)
+                }
                 res.status(200).json({ userData })
             }
         } catch (e) {
