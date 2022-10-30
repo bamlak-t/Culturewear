@@ -1,5 +1,6 @@
 import { db } from '../../lib/firebase'
 
+// TODO: move this to specific tailor
 const reviewsRoutes = async (req, res) => {
     const { review } = req.body
     if (req.method === "POST") {

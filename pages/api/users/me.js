@@ -4,6 +4,9 @@ import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
 const DEFAULT_USER = {
 	isTailor: false,
 	instagram: "",
+	facebook: "",
+	twitter: "",
+	phoneNumber: "",
 	designs: []
 }
 

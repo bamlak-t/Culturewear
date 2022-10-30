@@ -7,7 +7,7 @@ import Dropdown from '../src/dropdown';
 import { useState, useEffect } from 'react'
 import ListingTile from '../src/listingTile';
 import TagDropdown from '../src/tagDropdown';
-import {sortByData, filterByData, designsData, userData, processData} from '../src/mockdata'
+import { sortByData, filterByData, designsData, userData, processData } from '../src/mockdata'
 
 
 export default function Profile() {
