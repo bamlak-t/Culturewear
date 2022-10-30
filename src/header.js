@@ -16,8 +16,8 @@ import TextField from '@mui/material/TextField';
 import CustomButton from './customButton'
 import { useRouter } from 'next/router'
 
-const pages = ['Home', 'Tailors'];
-const settings = ['Profile', 'My Posts', 'Logout'];
+const pages = {'Home': '/home', 'Tailors': '/searchTailor'};
+const settings = {'Profile': '/profile', 'My Posts': '/myposts', 'Logout': ''};
 
 export default function Header() {
   const router = useRouter()
@@ -49,13 +49,13 @@ export default function Header() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {pages.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
-              <CustomButton page={page} onclick={(e) => handleAppBarNav(e, page)} />
+          {Object.keys(pages).map(type => (
+            <MenuItem key={type} onClick={handleCloseNavMenu}>
+              <CustomButton page={type} onclick={(e) => handleAppBarNav(e, pages[type])} />
             </MenuItem>
           ))}
 
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, ml: 50 }} />
           <Typography
             variant="h6"
             noWrap
@@ -151,9 +151,9 @@ export default function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+            {Object.keys(settings).map(setting => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center" onClick={(e) => handleAppBarNav(e, settings[setting])}>{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
