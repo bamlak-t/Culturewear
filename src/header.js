@@ -17,7 +17,7 @@ import CustomButton from './customButton'
 import { useRouter } from 'next/router'
 
 const pages = { 'Home': '/landing', 'Tailors': '/searchTailor' };
-const settings = { 'Profile': '/profile', 'My Posts': '/myposts', 'Logout': '' };
+const settings = { 'Profile': '/profile', 'Account': '/account', 'Logout': '' };
 
 export default function Header() {
   const router = useRouter()
@@ -56,13 +56,12 @@ export default function Header() {
           ))}
 
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,  }} /> */}
-          {/* <img
-            ml={50}
-
-            src={require('../assets/main-logo.jpeg')}
+          <img
+            style={{marginLeft: 300}}
+            height="80"
+            src={'/logo.jpg'}
             alt={''}
-            loading="lazy"
-          /> */}
+          />
           {/* <Typography
           >
             CultureWear
@@ -126,7 +125,7 @@ export default function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu

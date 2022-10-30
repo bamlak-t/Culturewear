@@ -30,7 +30,7 @@ function Profile({ user: authOUser }) {
   const [tailor, setTailor] = useState('')
   const [reviewList, setReviewList] = useState([])
   const [revUserList, setRevUserList] = useState([]) 
-  const [clothsList, setClothsList] = useState([])
+  // const [clothsList, setClothsList] = useState([])
 
   const rCatagories = {
     "deliveryTime": "Delivery Time", "fit": "Fit", "materialQuality": "Material Quality", "responseTime": "Response Time"
@@ -71,14 +71,14 @@ function Profile({ user: authOUser }) {
 
         for (let i = 0; i < revs.length; i++) {
           const revUsr = (await axios.get(`/api/users/${revs[i].userId}`)).data.userData
-          const revCloth = (await axios.get(`/api/designs/${revs[i].designId}`)).data.designData
+          // const revCloth = (await axios.get(`/api/designs/${revs[i].designId}`)).data.designData
 
           revUsrs.push(revUsr)
-          revCloth.push(revCloth)
+          // revCloth.push(revCloth)
         }
 
         console.log('rev', revs)
-        setClothsList(revCloth)
+        // setClothsList(revCloth)
         setRevUserList(revUsrs)
         setTailor(tail)
         setReviewList(revs)
@@ -107,7 +107,7 @@ function Profile({ user: authOUser }) {
 
           <CardHeader
             avatar={
-              <Avatar sx={{ marginLeft: 5, bgcolor: 'white', overflow: 'ellipsis' }} aria-label="recipe" src={user?.picture}>
+              <Avatar sx={{ marginLeft: 5, bgcolor: 'white', overflow: 'ellipsis', width: 100, height: 100 }} aria-label="recipe" src={user?.picture}>
                 R
               </Avatar>
             }
@@ -183,9 +183,9 @@ function Profile({ user: authOUser }) {
                                   title={user?.isTailor ? revUserList[index]?.name + " - Tailor" : revUserList[index]?.name}
                                 />
                                 <Typography variant="body2">{rev.body}</Typography>
-                                <Avatar sx={{ bgcolor: 'white' }} aria-label="recipe" src={clothsList[index]?.picture}>
+                                {/* <Avatar sx={{ bgcolor: 'white' }} aria-label="recipe" src={clothsList[index]?.picture}>
                                       C
-                                </Avatar>
+                                </Avatar> */}
                               </Stack>
                             </Paper>
                           )

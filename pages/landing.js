@@ -16,7 +16,7 @@ export default function Profile() {
     const [search, setSearch] = useState('')
     const [postListing, setListing] = useState([])
 
-    console.log(search, sortBy, filterBy);
+    // console.log(search, sortBy, filterBy);
 
 
     const handleSort = (value) => {
