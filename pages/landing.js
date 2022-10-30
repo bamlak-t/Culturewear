@@ -7,7 +7,7 @@ import Dropdown from '../src/dropdown';
 import { useState, useEffect } from 'react'
 import ListingTile from '../src/listingTile';
 import TagDropdown from '../src/tagDropdown';
-import {sortByData, filterByData, designsData, userData, processData} from '../src/mockdata'
+import { sortByData, filterByData, designsData, userData, processData } from '../src/mockdata'
 
 
 export default function Profile() {
@@ -60,14 +60,14 @@ export default function Profile() {
                 {
                     postListing.map((triple, index) => {
                         return (
-                            <Grid container xs={11} style={{justifyContent: 'space-around', margin: 'auto'}} key={index}>
-                            {triple.map((post) => {
-                                return (
-                                    <Grid key={post.id} item xs={3.5} style={{ marginLeft: 0, marginTop: 50 }}>
-                                        <ListingTile post={post} />
-                                    </Grid>
-                                )
-                            })}
+                            <Grid container xs={11} style={{ justifyContent: 'space-around', margin: 'auto' }} key={index}>
+                                {triple.map((post) => {
+                                    return (
+                                        <Grid key={post.id} item xs={3.5} style={{ marginLeft: 0, marginTop: 50 }}>
+                                            <ListingTile post={post} />
+                                        </Grid>
+                                    )
+                                })}
                             </Grid>
                         )
                     })

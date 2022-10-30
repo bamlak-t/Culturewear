@@ -12,6 +12,7 @@ const reviewRoutes = async (req, res) => {
             }
             const reviews = await query.get()
             const reviewsData = reviews.docs.map(review => ({ ...review.data(), id: review.id }))
+            console.log(reviewsData)
             res.status(200).json({ reviewsData })
         } catch (e) {
             res.status(400).end()
