@@ -1,4 +1,4 @@
-import { db } from '../../../lib/firebase'
+import { db, resolvePictureUrl } from '../../../lib/firebase'
 
 // get user information
 const userRoutes = async (req, res) => {
