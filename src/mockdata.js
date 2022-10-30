@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export const sortByData = [
     {
         label: 'Price Low'
@@ -188,7 +190,7 @@ export const processData = (rowSize=3) => {
     return allPosts
 }
 
-export const getUser = (userId) => {
-    const user = (userData.filter(user => user['id'] == userId))[0]
-    return user
+export const getUser = async (userId) => {
+    // const user = (userData.filter(user => user['id'] == userId))[0]
+    return await axios.get(`/api/users/${userId}`)
 }

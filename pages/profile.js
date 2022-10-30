@@ -11,8 +11,9 @@ import Stack from '@mui/material/Stack';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import ListingTile from '../src/listingTile';
+import axios from 'axios';
 
-export default function Profile() {
+export default function Profile({user: authOUser}) {
 
   const [sortBy, setSortBy] = useState('Newest')
   const [filterBy, setFilterBy] = useState()
@@ -28,11 +29,17 @@ export default function Profile() {
   console.log(search, sortBy, filterBy);
 
   useEffect(() => {
-    const allPosts = processData(3);
-    const usr = getUser('aYWhqgQpNlb4xae65XM6');
-    console.log(usr)
-    setUser(usr)
-    setListing(allPosts);
+    console.log('authOUser' ,authOUser)
+    const populate = async () => {
+      const allPosts = processData(3);
+      const currentUser = await axios.get("/api/users/me")
+      const usr = await getUser(authOUser?.id);
+
+      setUser(usr)
+      setListing(allPosts);
+    }
+    
+    populate()    
   }, [])
 
   const handleSort = (value) => {
@@ -87,6 +94,7 @@ export default function Profile() {
                 value="posts"
                 label="Posting"
               />
+              {}
               <Tab
                 value="reviews"
                 label="Reviews"
