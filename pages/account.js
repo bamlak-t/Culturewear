@@ -128,26 +128,16 @@ function Account({ user: authOUser }) {
     return (
         <div>
             <Header />
-            <h2 style={{width: '100%', textAlign: 'center'}}>Create posting</h2>
-            <Stack direction="row" spacing={2} sx={{ margin: 'auto', width: '70%', marginTop: 0 }}>
+            <h2 style={{ width: '100%', textAlign: 'center' }}>Create posting</h2>
+            <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-around', margin: 'auto', width: '70%', marginTop: 0 }}>
                 <img
-                    style={{ border: '1px solid black' }}
+                    style={{ border: '1px solid black', borderRadius: 20, overflow: 'hidden' }}
                     height="500"
                     width="500"
                     src={prodImg}
                     alt={''}
                 />
-                <Button
-                    variant="contained"
-                    component="label"
-                    sx={{ width: 150 }}
-                >
-                    Upload Image
-                    <input
-                        type="file"
-                        hidden
-                    />
-                </Button>
+
                 <Stack direction="column" spacing={5}>
                     <TextField
                         id="outlined-name"
@@ -173,6 +163,18 @@ function Account({ user: authOUser }) {
                         />
                     </FormControl>
 
+
+                    <Button
+                        variant="contained"
+                        component="label"
+                        sx={{ width: '100%' }}
+                    >
+                        Upload Image
+                        <input
+                            type="file"
+                            hidden
+                        />
+                    </Button>
                     <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', width: '100%', marginTop: 10 }}>
                         <Button variant="outlined">Cancel</Button>
                         <Button variant="contained">Submit</Button>

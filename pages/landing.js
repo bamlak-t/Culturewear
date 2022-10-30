@@ -44,9 +44,9 @@ export default function Profile() {
     }, [])
 
     return (
-        <>
+        <div style={{backgroundColor: '#E9ECF1'}}>
             <Header />
-            <Grid container mt={1} spacing={2}>
+            <Grid container mt={5} spacing={2}>
                 <Grid item xs={7}>
                     <TextField sx={{ marginLeft: '50px' }} id="standard-basic" label="Search" variant="standard" onChange={e => setSearch(e.target.value)} />
                 </Grid>
@@ -75,6 +75,6 @@ export default function Profile() {
 
 
             </Grid>
-        </>
+        </div>
     )
 }

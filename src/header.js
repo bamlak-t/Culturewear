@@ -57,8 +57,8 @@ export default function Header() {
 
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,  }} /> */}
           <img
-            style={{marginLeft: 300}}
-            height="80"
+            style={{marginLeft: 225}}
+            height="100"
             src={'/logo.jpg'}
             alt={''}
           />
@@ -125,7 +125,7 @@ export default function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="" src="/static/images/avatar/2.jpg" />
+                <Avatar sx={{width: 70, height: 70}} alt="" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu

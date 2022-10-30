@@ -60,7 +60,7 @@ export default function ListingTile({ height, post }) {
     };
 
     return (
-        <Card sx={{ width: '100%', height: height ? height : 300 }} style={{
+        <Card sx={{ width: '100%', height: height ? height : 300, borderRadius: 7 }} style={{
             backgroundImage: `url(${clothPicture})`,
             backgroundSize: '100%',
             backgroundRepeat: 'no-repeat',
