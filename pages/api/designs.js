@@ -28,6 +28,7 @@ const designsRoutes = async (req, res) => {
             const designRef = await db.collection('designs').add(design)
 
             // update tailor tags
+            // TODO: add design to users list of designs
             const designData = await designRef.get()
             const { tags, tailorId } = designData
             tags.forEach(async tag => {
