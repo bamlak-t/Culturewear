@@ -1,4 +1,9 @@
 import axios from "axios"
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 export const sortByData = [
     {
@@ -144,13 +149,13 @@ export const tailorInfo = [
     }
 ]
 
-export const socials = [
-    "instagram",
-    "facebook",
-    "watsapp",
-    "twitter",
-    "gmail"
-]
+export const socials = {
+    "instagram": <InstagramIcon />,
+    "facebook":<FacebookIcon />,
+    "watsapp":<WhatsAppIcon />,
+    "twitter":<TwitterIcon />,
+    "gmail":<AlternateEmailIcon />
+}
 
 export const processData = (rowSize=3) => {
     const allPosts = []

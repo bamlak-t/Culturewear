@@ -2,7 +2,7 @@ import Header from '../src/header'
 import Grid from '@mui/material/Grid';
 import TagDropdown from '../src/tagDropdown';
 import Dropdown from '../src/dropdown';
-import { sortByData, getUser, filterByData, processData } from '../src/mockdata'
+import { sortByData, getUser, filterByData, processData, socials } from '../src/mockdata'
 import { useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
@@ -18,7 +18,6 @@ function Profile({ user: authOUser }) {
 
   const [sortBy, setSortBy] = useState('Newest')
   const [filterBy, setFilterBy] = useState()
-  const [search, setSearch] = useState('')
   const [postListing, setListing] = useState([])
   const [tabValue, setTabVal] = useState('posts');
   const [user, setUser] = useState('')
@@ -27,7 +26,20 @@ function Profile({ user: authOUser }) {
     setTabVal(newValue);
   };
 
-  console.log(search, sortBy, filterBy);
+
+  // "id": "aYWhqgQpNlb4xae65XM6",
+  // "instagram": "",
+  // "socials": ["instagram"],
+  // "name": "Samuel Adekunle",
+  // "designs": [
+  //     "gi5ZTnIaVgVcg22gjACo"
+  // ],
+  // "email": "ebnsamuel@gmail.com",
+  // "isTailor": false,
+  // "picture": "https://lh3.googleusercontent.com/a/ALm5wu2TDq6dFNBG98KhlbXK33HS9-cX33nGbKB3FQMQ2A=s96-c"
+
+
+  console.log(sortBy, filterBy);
 
   useEffect(() => {
     console.log('authOUser', authOUser)
@@ -95,11 +107,13 @@ function Profile({ user: authOUser }) {
                 value="posts"
                 label="Posting"
               />
-              { }
-              <Tab
-                value="reviews"
-                label="Reviews"
-              />
+              {user.isTailor && (
+                <Tab
+                  value="reviews"
+                  label="Reviews"
+                />
+              )}
+
             </Tabs>
           </Box>
           <Box sx={{}}>
@@ -131,7 +145,27 @@ function Profile({ user: authOUser }) {
           </Box>
         </Stack>
 
-        <Box sx={{ flex: '1', height: '800px', bgcolor: 'red' }}>
+        <Box sx={{ flex: '1', height: '800px' }}>
+          <Stack direction="column" spacing={2} sx={{ flex: '2' }}>
+            Socials
+            <Stack direction="row" spacing={2} sx={{ flex: '2' }}>
+              {user?.socials.map(s => {
+                return (
+                  <Link href={user[s]}>
+                    {socials[s]}
+                  </Link>
+                )
+              })}
+            </Stack>
+            {
+              user.isTailor
+              && (
+                
+              )
+            }
+
+
+          </Stack>
 
         </Box>
       </Stack>
