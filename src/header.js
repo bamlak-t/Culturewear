@@ -7,17 +7,15 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useState } from 'react'
-import TextField from '@mui/material/TextField';
-import CustomButton from './customButton'
-import { useRouter } from 'next/router'
+import { useState } from 'react';
+import CustomButton from './customButton';
+import { useRouter } from 'next/router';
 
 const pages = { 'Home': '/landing', 'Tailors': '/searchTailor' };
-const settings = { 'Profile': '/profile', 'Account': '/account', 'Logout': '' };
+const settings = { 'Profile': '/profile', 'Account': '/account', 'Upload': "/upload", 'Logout': '' };
 
 export default function Header() {
   const router = useRouter()

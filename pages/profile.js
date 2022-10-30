@@ -59,7 +59,7 @@ function Profile({ user: authOUser }) {
     console.log('authOUser', authOUser)
     const populate = async () => {
       const allPosts = processData(3);
-      const currentUser = await (await axios.get("/api/users/me")).data.userData
+      const currentUser = (await axios.get("/api/users/me")).data.userData
       // const usr = await getUser(authOUser?.id);
       currentUser.isTailor = true
       if (currentUser.isTailor) {
@@ -124,7 +124,6 @@ function Profile({ user: authOUser }) {
 
       <Stack direction="row" spacing={2} m={5}>
         <Stack direction="column" spacing={2} sx={{ flex: '5' }}>
-
           <Box>
             <Tabs
               value={tabValue}
