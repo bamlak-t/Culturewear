@@ -11,7 +11,7 @@ export default function Dropdown({sx, dropdownLabel, dropdownData, handleSelect}
       autoHighlight
       getOptionLabel={(option) => option.label}
       onChange={(event, newValue) => {
-        handleSelect(newValue.label);
+        handleSelect(newValue?.label);
       }}
       renderInput={(params) => (
         <TextField

@@ -60,7 +60,7 @@ export default function Profile() {
                 {
                     postListing.map((triple, index) => {
                         return (
-                            <Grid container xs={11} style={{justifyContent: 'space-around', margin: 'auto'}} key={index}>
+                            <Grid container xs={11} item style={{justifyContent: 'space-around', margin: 'auto'}} key={index}>
                             {triple.map((post) => {
                                 return (
                                     <Grid key={post.id} item xs={3.5} style={{ marginLeft: 0, marginTop: 50 }}>

@@ -11,13 +11,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import {useState} from 'react'
+import { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import CustomButton from './customButton'
 import { useRouter } from 'next/router'
 
-const pages = {'Home': '/home', 'Tailors': '/searchTailor'};
-const settings = {'Profile': '/profile', 'My Posts': '/myposts', 'Logout': ''};
+const pages = { 'Home': '/landing', 'Tailors': '/searchTailor' };
+const settings = { 'Profile': '/profile', 'My Posts': '/myposts', 'Logout': '' };
 
 export default function Header() {
   const router = useRouter()
@@ -55,24 +55,18 @@ export default function Header() {
             </MenuItem>
           ))}
 
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, ml: 50 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/home"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,  }} /> */}
+          {/* <img
+            ml={50}
+
+            src={require('../assets/main-logo.jpeg')}
+            alt={''}
+            loading="lazy"
+          /> */}
+          {/* <Typography
           >
             CultureWear
-          </Typography>
+          </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -126,7 +120,7 @@ export default function Header() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-         
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -151,7 +145,7 @@ export default function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-            {Object.keys(settings).map(setting => (
+              {Object.keys(settings).map(setting => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" onClick={(e) => handleAppBarNav(e, settings[setting])}>{setting}</Typography>
                 </MenuItem>

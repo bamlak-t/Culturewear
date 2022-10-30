@@ -127,7 +127,7 @@ export const tailorInfo = [
     {
         "reviewsData": [
             {
-                "id": "iqGgwHgXBAAT1ShYDdva",
+                "id": "hhmq3w2q4Yjet1vwdd31TL8g78hHId7H",
                 "uploadTime": {
                     "_seconds": 1667060434,
                     "_nanoseconds": 188000000
@@ -136,7 +136,6 @@ export const tailorInfo = [
                     "responseTime": 0,
                     "fit": 0,
                     "materialQuality": 0,
-                    "price": 0,
                     "deliveryTime": 0
                 },
                 "averageRating": 0,
