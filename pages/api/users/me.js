@@ -12,10 +12,10 @@ const getCurrentUser = async (req, res) => {
 	const { user } = getSession(req, res);
 	if (req.method === "GET") {
 		try {
-			const userRef = db.collection('users').doc(user.user_id)
+			const userRef = db.collection('users').doc(user.sid)
 			let userDoc = await userRef.get()
 			if (!userDoc.exists) {
-				await db.collection('users').doc(user.user_id).create({
+				await db.collection('users').doc(user.sid).create({
 					...DEFAULT_USER,
 					name: user.name,
 					email: user.email,
@@ -38,7 +38,7 @@ const getCurrentUser = async (req, res) => {
 		try {
 			const { user: userUpdate } = req.body
 			// TODO: process image in userUpdate before uploading
-			await db.collection('users').doc(user.user_id).update(userUpdate)
+			await db.collection('users').doc(user.sid).update(userUpdate)
 			res.status(200).end()
 		} catch (e) {
 			res.status(400).end()

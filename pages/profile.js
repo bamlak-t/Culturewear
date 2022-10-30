@@ -12,8 +12,9 @@ import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import ListingTile from '../src/listingTile';
 import axios from 'axios';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-export default function Profile({user: authOUser}) {
+function Profile({ user: authOUser }) {
 
   const [sortBy, setSortBy] = useState('Newest')
   const [filterBy, setFilterBy] = useState()
@@ -29,17 +30,17 @@ export default function Profile({user: authOUser}) {
   console.log(search, sortBy, filterBy);
 
   useEffect(() => {
-    console.log('authOUser' ,authOUser)
+    console.log('authOUser', authOUser)
     const populate = async () => {
       const allPosts = processData(3);
       const currentUser = await axios.get("/api/users/me")
-      const usr = await getUser(authOUser?.id);
+      // const usr = await getUser(authOUser?.id);
 
-      setUser(usr)
+      setUser(currentUser)
       setListing(allPosts);
     }
-    
-    populate()    
+
+    populate()
   }, [])
 
   const handleSort = (value) => {
@@ -94,7 +95,7 @@ export default function Profile({user: authOUser}) {
                 value="posts"
                 label="Posting"
               />
-              {}
+              { }
               <Tab
                 value="reviews"
                 label="Reviews"
@@ -137,3 +138,5 @@ export default function Profile({user: authOUser}) {
     </div>
   )
 }
+
+export default withPageAuthRequired(Profile)
