@@ -106,11 +106,11 @@ function Account({ user: authOUser }) {
                     <Button
                         variant="contained"
                         component="label"
-                        onClick={e => handleChange(e, "img")}
                         sx={{ width: '100%' }}
                     >
                         Upload Image
                         <input
+                            onChange={e => handleChange(e, "img")}
                             type="file"
                             hidden
                         />
