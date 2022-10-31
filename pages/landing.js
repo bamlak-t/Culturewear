@@ -47,9 +47,9 @@ function Landing({user: authOUser}) {
         // - cloth price
         // - cloth tags
         const process = async() => {
-            const usr = (await axios.get(`/api/users/me`)).data.userData
-            console.log('usr', usr)
-            setCurUsr(usr)
+            // const usr = (await axios.get(`/api/users/me`)).data.userData
+            // console.log('usr', usr)
+            // setCurUsr(usr)
         }
 
         const allPosts = processData();
