@@ -20,7 +20,7 @@ function Account({ user: authOUser }) {
 
     const [prodName, setProdName] = useState('')
     const [prodDesc, setProdDesc] = useState('')
-    const [prodTags, setProdTags] = useState('')
+    const [prodTags, setProdTags] = useState([])
     const [prodPricing, setProdPrice] = useState()
     const [prodImg, setProdImg] = useState('')
 
@@ -28,6 +28,11 @@ function Account({ user: authOUser }) {
     const rCatagories = {
         "deliveryTime": "Delivery Time", "fit": "Fit", "materialQuality": "Material Quality", "responseTime": "Response Time"
     }
+
+    const tags = ["Clothing", "Outerwear", "One-piece garment", "Arm", "Shoulder", "Neck", "Waist", "Sleeve", "Gown", "Day dress"]
+    const tagsDrop = tags.map(tag => ({ label: tag }))
+
+    console.log(tagsDrop)
 
     const handleChange = (e, type) => {
         // const [prodName, setProdName] = useState('')
@@ -53,6 +58,7 @@ function Account({ user: authOUser }) {
                 break
             case "img":
                 setProdImg("https://i.pinimg.com/736x/e9/9c/4d/e99c4de6d8034b75ee7bf388cf4ff707.jpg")
+                setProdTags(tagsDrop)
                 console.log("IMAGE", prodImg)
                 break
         }
@@ -84,7 +90,7 @@ function Account({ user: authOUser }) {
                         value={prodDesc}
                         onChange={e => handleChange(e, "desc")}
                     />
-                    <TagDropdown sx={{ width: 300 }} dropdownLabel="Tags" dropdownData={[]} handleSelect={handleChange} />
+                    <TagDropdown sx={{ width: 300 }} dropdownLabel="Tags" dropdownData={prodTags} handleSelect={handleChange} />
                     <FormControl fullWidth sx={{ m: 1 }}>
                         <InputLabel htmlFor="outlined-adornment-amount">Price</InputLabel>
                         <OutlinedInput
@@ -112,7 +118,7 @@ function Account({ user: authOUser }) {
                     <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', width: '100%', marginTop: 10 }}>
                         <Button variant="outlined">Cancel</Button>
                         <Link href="/landing">
-                        <Button variant="contained">Submit</Button>
+                            <Button variant="contained">Submit</Button>
 
                         </Link>
                     </Stack>
