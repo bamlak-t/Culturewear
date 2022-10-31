@@ -10,15 +10,18 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CustomButton from './customButton';
 import { useRouter } from 'next/router';
+import axios from 'axios';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 const pages = { 'Home': '/landing', 'Tailors': '/searchTailor' };
 const settings = { 'Profile': '/profile', 'Account': '/account', 'Upload': "/upload", 'Logout': '' };
 
-export default function Header() {
+function Header() {
   const router = useRouter()
+  const [curUser, setCurUsr] = useState('')
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -43,6 +46,15 @@ export default function Header() {
     router.push(href)
   }
 
+  useEffect(() => {
+    const process = async () => {
+      const usr = (await axios.get(`/api/users/me`)).data.userData
+      console.log('usr', usr)
+      setCurUsr(usr)
+    }
+    process()
+  }, [])
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -55,7 +67,7 @@ export default function Header() {
 
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,  }} /> */}
           <img
-            style={{marginLeft: 225}}
+            style={{ marginLeft: 225 }}
             height="100"
             src={'/logo.jpg'}
             alt={''}
@@ -93,7 +105,7 @@ export default function Header() {
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
-            >
+            > 
 
             </Menu>
           </Box>
@@ -123,7 +135,7 @@ export default function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar sx={{width: 70, height: 70}} alt="" src="/static/images/avatar/2.jpg" />
+                <Avatar sx={{ width: 70, height: 70 }} alt="" src={curUser?.picture} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -154,3 +166,5 @@ export default function Header() {
     </AppBar>
   );
 }
+
+export default withPageAuthRequired(Header)

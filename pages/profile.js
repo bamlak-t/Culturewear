@@ -61,11 +61,11 @@ function Profile({ user: authOUser }) {
       const allPosts = processData(3);
       const currentUser = (await axios.get("/api/users/me")).data.userData
       // const usr = await getUser(authOUser?.id);
-      currentUser.isTailor = true
+      // currentUser.isTailor = true
       if (currentUser.isTailor) {
         // get tailor data
-        const tail = (await axios.get(`/api/tailors/${authOUser.sid}`)).data.tailorData
-        const revs = (await axios.get(`/api/reviews/${authOUser.sid}`)).data.reviewsData
+        const tail = (await axios.get(`/api/tailors/SOGY9Qi0SOHdFAjS4WTL`)).data.tailorData
+        const revs = (await axios.get(`/api/reviews/SOGY9Qi0SOHdFAjS4WTL`)).data.reviewsData
         const revUsrs = []
         const revCloth = []
 

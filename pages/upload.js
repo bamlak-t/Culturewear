@@ -11,6 +11,8 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+
 
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
@@ -21,6 +23,7 @@ function Account({ user: authOUser }) {
     const [prodTags, setProdTags] = useState('')
     const [prodPricing, setProdPrice] = useState()
     const [prodImg, setProdImg] = useState('')
+
 
     const rCatagories = {
         "deliveryTime": "Delivery Time", "fit": "Fit", "materialQuality": "Material Quality", "responseTime": "Response Time"
@@ -49,7 +52,8 @@ function Account({ user: authOUser }) {
                 setProdPrice(e.target.value)
                 break
             case "img":
-                setProdImg(e.target.value)
+                setProdImg("https://i.pinimg.com/736x/e9/9c/4d/e99c4de6d8034b75ee7bf388cf4ff707.jpg")
+                console.log("IMAGE", prodImg)
                 break
         }
     }
@@ -96,6 +100,7 @@ function Account({ user: authOUser }) {
                     <Button
                         variant="contained"
                         component="label"
+                        onClick={e => handleChange(e, "img")}
                         sx={{ width: '100%' }}
                     >
                         Upload Image
@@ -106,7 +111,10 @@ function Account({ user: authOUser }) {
                     </Button>
                     <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', width: '100%', marginTop: 10 }}>
                         <Button variant="outlined">Cancel</Button>
+                        <Link href="/landing">
                         <Button variant="contained">Submit</Button>
+
+                        </Link>
                     </Stack>
                 </Stack>
             </Stack>

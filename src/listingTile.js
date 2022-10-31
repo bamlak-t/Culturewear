@@ -10,6 +10,7 @@ import Chip from '@mui/material/Chip';
 import CardActionArea from '@mui/material/CardActionArea';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 
 const PostingModal = ({ props }) => {
     const { expanded, handleExpandClick, post } = props
@@ -34,7 +35,9 @@ const PostingModal = ({ props }) => {
             aria-describedby="modal-modal-description"
         >
             <Box sx={{ width: 700, height: 500, marginLeft: 'auto', marginRight: 'auto', marginTop: 20, borderRadius: 10 }}>
-                <ListingTile height={500} post={post} />
+                <Link href="/profile">
+                    <ListingTile height={500} post={post} />
+                </Link>
             </Box>
         </Modal>
     )
@@ -77,7 +80,7 @@ export default function ListingTile({ height, post }) {
                     // image={clothPicture}
                 />  */}
                 <div style={{ flex: 1 }}></div>
-                <CardContent style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0), white)' }}>
+                <CardContent style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0), black)' }}>
 
                     {/* <Typography variant="body2" color="white">
                         {clothName}
@@ -85,13 +88,15 @@ export default function ListingTile({ height, post }) {
                     <CardHeader
                         avatar={
                             <Avatar sx={{ bgcolor: red[500], overflow: 'ellipsis' }} aria-label="recipe" src={picture}>
-                                R
+                                {name[0].toUpperCase()}
                             </Avatar>
                         }
-                        title={clothName}
-                        subheader={isTailor ? name + " - Tailor" : name}
+                        sx={{ color: 'white' }}
+                        title={isTailor ? name + " - Tailor" : name}
+                        // {clothName}
+                        // subheader={isTailor ? name + " - Tailor" : name}
                         action={
-                            <Avatar sx={{ bgcolor: 'white' }} aria-label="recipe">
+                            <Avatar sx={{ bgcolor: 'white', width: 50 }} aria-label="recipe">
                                 <Typography variant="body1" fontWeight="bold" color="text.secondary">
                                     £{price}
 

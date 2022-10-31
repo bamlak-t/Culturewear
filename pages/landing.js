@@ -8,13 +8,15 @@ import { useState, useEffect } from 'react'
 import ListingTile from '../src/listingTile';
 import TagDropdown from '../src/tagDropdown';
 import { sortByData, filterByData, designsData, userData, processData } from '../src/mockdata'
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 
-export default function Profile() {
+function Landing({user: authOUser}) {
     const [sortBy, setSortBy] = useState('Newest')
     const [filterBy, setFilterBy] = useState()
     const [search, setSearch] = useState('')
     const [postListing, setListing] = useState([])
+    const [curUser, setCurUsr] = useState('')
 
     // console.log(search, sortBy, filterBy);
 
@@ -24,7 +26,15 @@ export default function Profile() {
     }
 
     const handleFilter = (value) => {
-        console.log(value)
+        // const listing = postListing.filter(triple => { 
+        //     triple.map(trip => {
+        //         console.log('val', val)
+        //         const inc = value.map(filter => trip?.tags.includes(filter)) 
+        //         return inc.length > 0
+        //     })
+            
+        // })
+        // console.log(pstIdx, listing)
         setFilterBy(value)
     }
 
@@ -36,6 +46,11 @@ export default function Profile() {
         // - cloth image
         // - cloth price
         // - cloth tags
+        const process = async() => {
+            const usr = (await axios.get(`/api/users/me`)).data.userData
+            console.log('usr', usr)
+            setCurUsr(usr)
+        }
 
         const allPosts = processData();
 
@@ -44,7 +59,7 @@ export default function Profile() {
     }, [])
 
     return (
-        <div style={{backgroundColor: '#E9ECF1'}}>
+        <div>
             <Header />
             <Grid container mt={5} spacing={2}>
                 <Grid item xs={7}>
@@ -63,7 +78,7 @@ export default function Profile() {
                             <Grid container xs={11} item style={{justifyContent: 'space-around', margin: 'auto'}} key={index}>
                             {triple.map((post) => {
                                 return (
-                                    <Grid key={post.id} item xs={3.5} style={{ marginLeft: 0, marginTop: 50 }}>
+                                    <Grid key={post.id} item xs={3.7} style={{ marginLeft: 0, marginTop: 50 }}>
                                         <ListingTile post={post} />
                                     </Grid>
                                 )
@@ -78,3 +93,5 @@ export default function Profile() {
         </div>
     )
 }
+
+export default withPageAuthRequired(Landing)

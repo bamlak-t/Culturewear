@@ -12,6 +12,7 @@ import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
+import { tailorInfo, getUser } from '../src/mockdata';
 
 export default function SearchTailor() {
 
@@ -20,13 +21,13 @@ export default function SearchTailor() {
 
   useEffect(() => {
     const process = async () => {
-      const list = (await axios.get(`/api/tailors`)).data.tailorsData
+      const list = tailorInfo//(await axios.get(`/api/tailors`)).data.tailorsData
       console.log('dev list ', list)
       const tailorUser = []
       const averageR = []
       for (let i = 0; i < list.length; i++) {
         const tail = list[i]
-        const usr = (await axios.get(`/api/users/${tail.id}`)).data.userData
+        const usr = getUser(tail.id) //(await axios.get(`/api/users/${tail.id}`)).data.userData
         tailorUser.push(usr)
         averageR.push(tail?.averageRating)
         console.log('devusr ', tailorUser)

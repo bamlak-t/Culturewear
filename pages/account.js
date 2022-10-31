@@ -93,6 +93,7 @@ function Account({ user: authOUser }) {
                         value={prodDesc}
                         onChange={e => handleChange(e, "desc")}
                     />
+                        <Button style={{height: 60, margin: 25}} variant="contained" onClick={() => setAllDisabled(!allDisabled)}>{allDisabled ? ("Edit") : ("Save")}</Button>
 
                 </Stack>
 
