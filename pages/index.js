@@ -18,13 +18,18 @@ export default function Home() {
   }
 
   const getCurrentUser = async () => {
-    const res = await axios.get('/api/users/me')
-    setUser(res.data.userData)
+    try {
+      const res = await axios.get('/api/users/me')
+      setCurrentUser(res.data.userData)
+    } catch (e) {
+      // pass
+    }
+
   }
 
   const getUser = async (id) => {
     const res = await axios.get(`/api/users/${id}`)
-    setCurrentUser(res.data.userData)
+    setUser(res.data.userData)
   }
 
   const getTailor = async (id) => {
@@ -60,14 +65,17 @@ export default function Home() {
     <>
       <Link href="/api/auth/login">Login</Link>
       <br />
+      <Link href="/landing">Home</Link>
+      <br />
       <Link href="/api/auth/logout">Logout</Link>
       <br />
+      <h3>Testing Endpoints:</h3>
       <p>Desgins: {String(designs.map(design => design.name))} </p>
-      <p>Any user: {String(user.name)}</p>
+      <p>Random user: {String(user.name)}</p>
       <p>Current User: {String(currentUser.name)}</p>
       <p>Tailor User Id: {String(tailor.id)}</p>
       <p>All Tailors: {String(tailors.map(tailor => tailor.id))}</p>
-      <p>Reviews: {String(reviews.map(review => review.body))}</p>
+      <p>Tailors Reviews: {String(reviews.map(review => review.body))}</p>
     </>
   )
 }
