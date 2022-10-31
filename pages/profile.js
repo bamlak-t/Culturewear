@@ -59,13 +59,13 @@ function Profile({ user: authOUser }) {
     console.log('authOUser', authOUser)
     const populate = async () => {
       const allPosts = processData(3);
-      const currentUser = (await axios.get("/api/users/me")).data.userData
+      const currentUser = (await axios.get("/api/users/hhmq3w2q4Yjet1vwdd31TL8g78hHId7H")).data.userData
       // const usr = await getUser(authOUser?.id);
-      // currentUser.isTailor = true
+      currentUser.isTailor = true
       if (currentUser.isTailor) {
         // get tailor data
-        const tail = (await axios.get(`/api/tailors/SOGY9Qi0SOHdFAjS4WTL`)).data.tailorData
-        const revs = (await axios.get(`/api/reviews/SOGY9Qi0SOHdFAjS4WTL`)).data.reviewsData
+        const tail = (await axios.get(`/api/tailors/hhmq3w2q4Yjet1vwdd31TL8g78hHId7H`)).data.tailorData
+        const revs = (await axios.get(`/api/reviews/hhmq3w2q4Yjet1vwdd31TL8g78hHId7H`)).data.reviewsData
         const revUsrs = []
         const revCloth = []
 
